@@ -1,12 +1,19 @@
 package Mobility;
 
 public class Point {
-    int x, y;
+    final int x, y;
 
     // important: perhaps I should make this class immutable?
     public Point(int x, int y){
-        this.x = x;
-        this.y = y;
+        if (x >= 0 && y >= 0) {
+            this.x = x;
+            this.y = y;
+        }
+        else { //to know that there was an error in initializing the point BUT!!! it probably should throw an exception!
+            this.x = -1;
+            this.y = -1;
+        }
+
     }
 
     public Point(Point location) {
@@ -20,11 +27,6 @@ public class Point {
     protected int getY(){
         return this.y;
     }
-    protected void setX(int x){
-        this.x = x;
-    }
-    protected void setY(int y){
-        this.y = y;
-    }
+
 
 }
