@@ -8,8 +8,8 @@ import Mobility.Point;
 import java.util.Scanner;
 
 /**
- * Yael Berco, ID: 213435399
- * Alon Ben, ID: 313435399
+ * Yael Berko, ID: 213435399
+ * Alon Ben, ID: 207846049
  * Main system class for managing a collection of animals.
  * Allows user to create various types of animals and perform actions on them.
  */
