@@ -1,57 +1,55 @@
+package Animals;
+import Mobility.Point;
 
+/**
+ * Abstract class representing an air animal, extending the Animal class.
+ * This class adds wingspan as a characteristic specific to flying animals.
+ */
+public abstract class AirAnimal extends Animal {
+    private double wingspan; // The wingspan of the air animal
 
-
-/*package animals;
-
-import mobility.Point;
-
-public class AirAnimal extends Animal {
-    private double wingspan;
-    private double altitudeOfFlight;
-    public static final double MAX_ALTITUDE = 1000;
-
-
-
-    public AirAnimal(String name, Gender gender, double weight, double speed, Point position, double wingspan, double altitudeOfFlight) {
-        super(name, gender, weight, speed, position);
+    /**
+     * Constructs an AirAnimal with the specified attributes.
+     * The initial position is set to (0, 100) for all air animals.
+     *
+     * @param name     The name of the air animal.
+     * @param gender   The gender of the air animal.
+     * @param weight   The weight of the air animal.
+     * @param speed    The speed of the air animal.
+     * @param wingspan The wingspan of the air animal.
+     */
+    public AirAnimal(String name, Gender gender, double weight, double speed, double wingspan) {
+        super(name, gender, weight, speed, new Point(0, 100)); // Set initial position to (0, 100)
         this.wingspan = wingspan;
-        setAltitudeOfFlight(altitudeOfFlight); // use the setter to ensure validation
     }
 
-
+    /**
+     * Gets the wingspan of the air animal.
+     *
+     * @return The wingspan of the air animal.
+     */
     public double getWingspan() {
         return wingspan;
     }
 
-
+    /**
+     * Sets the wingspan of the air animal.
+     *
+     * @param wingspan The new wingspan to set.
+     */
     public void setWingspan(double wingspan) {
         this.wingspan = wingspan;
     }
 
-
-    public double getAltitudeOfFlight() {
-        return altitudeOfFlight;
-    }
-
-
-    public boolean setAltitudeOfFlight(double altitudeOfFlight) {
-        if (altitudeOfFlight >= 0 && altitudeOfFlight <= MAX_ALTITUDE) {
-            this.altitudeOfFlight = altitudeOfFlight;
-            return true;
-        } else {
-            System.out.println("Altitude of flight must be between 0 and " + MAX_ALTITUDE);
-            return false;
-        }
-    }
-
+    /**
+     * Returns a string representation of the AirAnimal.
+     * This method overrides the toString method from the Animal class
+     * to include the wingspan information.
+     *
+     * @return A string representation of the AirAnimal, including its wingspan.
+     */
     @Override
     public String toString() {
-        return super.toString() + ", Wingspan: " + wingspan + ", Altitude of Flight: " + altitudeOfFlight;
-    }
-
-    @Override
-    public void makeSound() {
-        System.out.println("AirAnimal " + getName() + " said Clack-wack-chack");
+        return super.toString() + ", Wingspan: " + wingspan;
     }
 }
-*/

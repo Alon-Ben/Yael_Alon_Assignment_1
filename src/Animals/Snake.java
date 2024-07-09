@@ -1,13 +1,20 @@
-package animals;
+package Animals;
 
-public class Snake extends TerrestrialAnimal {
+/**
+ * Represents a Snake, which is a type of TerrestrialAnimal.
+ * This class extends TerrestrialAnimals and adds snake-specific attributes and behaviors.
+ */
+public class Snake extends TerrestrialAnimals {
+    /**
+     * Enum representing the venomous status of the snake.
+     */
     public enum Poisonous {
         NON_VENOMOUS,
         VENOMOUS,
         HIGHLY_VENOMOUS
     }
 
-    private Poisonous poisonous;
+    private Poisonous poisonous; // The venomous status of the snake
     private double length; // Length of the snake in meters
 
     /**
@@ -20,7 +27,7 @@ public class Snake extends TerrestrialAnimal {
      * @param poisonous  The poisonous level of the snake
      */
     public Snake(String name, Gender gender, double weight, double length, Poisonous poisonous) {
-        super(name, gender, weight, 0, 20); // Default location for terrestrial animals
+        super(name, gender, weight, 0, 20); // Default location for terrestrial animals, 0 speed, 20 legs (placeholder)
         this.length = length;
         this.poisonous = poisonous;
     }
@@ -61,13 +68,23 @@ public class Snake extends TerrestrialAnimal {
         this.poisonous = poisonous;
     }
 
+    /**
+     * Returns a string representation of the Snake object.
+     *
+     * @return A string containing the snake's details, including length and venomous status
+     */
     @Override
     public String toString() {
         return super.toString() + ", Length: " + length + "m, Poisonous: " + poisonous;
     }
 
+    /**
+     * Returns the sound made by the snake.
+     *
+     * @return The string representing the hissing sound of a snake
+     */
     @Override
-    public void makeSound() {
-        System.out.println("Snake " + getName() + " said ssssssss");
+    protected String getSound() {
+        return "ssssssss";
     }
 }
