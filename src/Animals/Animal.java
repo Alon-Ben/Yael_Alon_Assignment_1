@@ -1,6 +1,10 @@
 package Animals;
 
 import java.util.ArrayList;
+
+import Graphics.IAnimal;
+import Graphics.IClonable;
+import Mobility.ILocatable;
 import Mobility.Mobile;
 import Olympics.Medal;
 import Mobility.Point;
@@ -9,7 +13,7 @@ import Mobility.Point;
  * Abstract class representing an animal.
  * Extends the Mobile class and provides basic properties and behaviors common to all animals.
  */
-public abstract class Animal extends Mobile {
+public abstract class Animal extends Mobile implements IAnimal , IClonable {
 
     /**
      * Enum representing the gender of the animal.
