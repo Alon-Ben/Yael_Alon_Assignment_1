@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import Graphics.IAnimal;
 import Graphics.IClonable;
+import Graphics.IDrawable;
+import Graphics.IMoveable;
 import Mobility.ILocatable;
 import Mobility.Mobile;
 import Olympics.Medal;
@@ -13,7 +15,7 @@ import Mobility.Point;
  * Abstract class representing an animal.
  * Extends the Mobile class and provides basic properties and behaviors common to all animals.
  */
-public abstract class Animal extends Mobile implements IAnimal , IClonable {
+public abstract class Animal extends Mobile implements ILocatable, IMoveable, IDrawable, IAnimal, IClonable {
 
     /**
      * Enum representing the gender of the animal.
@@ -25,6 +27,16 @@ public abstract class Animal extends Mobile implements IAnimal , IClonable {
     private double weight; // Weight of the animal
     private double speed; // Speed of the animal
     private ArrayList<Medal> medals = new ArrayList<Medal>(); // List of medals won by the animal
+
+    private int size;
+    private int id;
+    private Location loc;
+    private Orientation orien;
+    private int maxEnergy;
+    private int energyPerMeter;
+    private CompetitionPanel pan;
+    private BufferedImage img1, img2, img3, img4;
+
 
     /**
      * Constructs an Animal with the specified attributes.
