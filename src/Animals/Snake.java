@@ -15,9 +15,8 @@ public class Snake extends TerrestrialAnimals implements IReptile {
      */
     @Override
     public boolean speedUp(int increment) {
-        if (this.getSpeed() + increment <= MAX_SPEED) {
-            this.setSpeed(this.getSpeed() + increment);
-            return true;
+        if (this.getSpeed() + increment <= MAX_SPEED ) {
+            return this.setSpeed(this.getSpeed() + increment);
         }
         return false;
     }
@@ -25,10 +24,16 @@ public class Snake extends TerrestrialAnimals implements IReptile {
     /**
      * Enum representing the venomous status of the snake.
      */
+//    public enum Poisonous {
+//        NON_VENOMOUS,
+//        VENOMOUS,
+//        HIGHLY_VENOMOUS
+//    }
+// second assignment orders:
     public enum Poisonous {
-        NON_VENOMOUS,
-        VENOMOUS,
-        HIGHLY_VENOMOUS
+        LOW,
+        MID,
+        HIGH
     }
 
     private Poisonous poisonous; // The venomous status of the snake
@@ -44,7 +49,7 @@ public class Snake extends TerrestrialAnimals implements IReptile {
      * @param poisonous  The poisonous level of the snake
      */
     public Snake(String name, Gender gender, double weight, double length, Poisonous poisonous) {
-        super(name, gender, weight, 0, 20); // Default location for terrestrial animals, 0 speed, 20 legs (placeholder)
+        super(name, gender, weight, 0, 0); // Default location for terrestrial animals, 0 speed, 0 legs because it's a snake god took his legs (or placeholder)
         this.length = length;
         this.poisonous = poisonous;
     }
