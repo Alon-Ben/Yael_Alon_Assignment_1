@@ -73,4 +73,36 @@ public abstract class Animal extends Mobile {
     public void makeSound() {
         System.out.println(getClass().getSimpleName() + " " + name + " said " + getSound());
     }
+
+    /**
+     * Sets the speed of the animal.
+     *
+     * @param speed The new speed of the animal.
+     * @return A boolean indicating whether the speed was successfully set.
+     *         Returns {@code true} if the speed is set successfully, {@code false} otherwise.
+     * @throws IllegalArgumentException If the speed is negative.
+     */
+    protected boolean setSpeed(double speed) {
+        if (speed < 0) {
+            throw new IllegalArgumentException("Speed cannot be negative.");
+        }
+        try {
+            this.speed = speed;
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Gets the speed of the animal.
+     *
+     * @return The current speed of the animal.
+     */
+    protected double getSpeed() {
+        return this.speed;
+    }
+
+
+
 }
