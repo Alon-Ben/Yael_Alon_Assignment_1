@@ -4,7 +4,24 @@ package Animals;
  * Represents a Snake, which is a type of TerrestrialAnimal.
  * This class extends TerrestrialAnimals and adds snake-specific attributes and behaviors.
  */
-public class Snake extends TerrestrialAnimals {
+public class Snake extends TerrestrialAnimals implements IReptile {
+    /**
+     * Increases the speed of the reptile.
+     * The implementation should ensure that the speed does not exceed MAX_SPEED.
+     *
+     * @param increment The amount to increase the speed by
+     * @return True if the speed was successfully increased, false otherwise
+     * (e.g., if the resulting speed would exceed MAX_SPEED)
+     */
+    @Override
+    public boolean speedUp(int increment) {
+        if (this.getSpeed() + increment <= MAX_SPEED) {
+            this.setSpeed(this.getSpeed() + increment);
+            return true;
+        }
+        return false;
+    }
+
     /**
      * Enum representing the venomous status of the snake.
      */
