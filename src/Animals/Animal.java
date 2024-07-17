@@ -77,6 +77,7 @@ public abstract class Animal extends Mobile {
     /**
      * Sets the speed of the animal.
      *
+     * TODO: make sure the Exception is okay and can be thrown and handled properly
      * @param speed The new speed of the animal.
      * @return A boolean indicating whether the speed was successfully set.
      *         Returns {@code true} if the speed is set successfully, {@code false} otherwise.
