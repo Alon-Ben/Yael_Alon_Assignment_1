@@ -7,7 +7,7 @@ import Mobility.Point;
  * Represents an Alligator, which is a type of WaterAnimal.
  * This class extends WaterAnimal and adds alligator-specific attributes and behaviors.
  */
-public class Alligator extends WaterAnimal {
+public class Alligator extends WaterAnimal implements IReptile,ITerrestrialAnimals {
 	/** The geographical area where the alligator lives */
 	private String areaOfLiving;
 
@@ -26,6 +26,8 @@ public class Alligator extends WaterAnimal {
 		super(name, gender, weight, speed, position, diveDepth);
 		this.areaOfLiving = areaOfLiving;
 	}
+
+	//TODO: Delegator , should I create an object of TerrestrialAnimals ? how to insure it is both water and terrestrial
 
 	/**
 	 * Gets the area of living for the alligator.
@@ -63,5 +65,30 @@ public class Alligator extends WaterAnimal {
 	@Override
 	protected String getSound() {
 		return "Roar";
+	}
+
+	/**
+	 * Increases the speed of the reptile.
+	 * The implementation should ensure that the speed does not exceed MAX_SPEED.
+	 *
+	 * @param increment The amount to increase the speed by
+	 * @return True if the speed was successfully increased, false otherwise
+	 * (e.g., if the resulting speed would exceed MAX_SPEED)
+	 *         todo: should we increase the speed up to MAX_SPEED yet return false for not being able to increase the "full" increment?
+	 */
+	/**
+	 * Increases the speed of the reptile.
+	 * The implementation should ensure that the speed does not exceed MAX_SPEED.
+	 *
+	 * @param increment The amount to increase the speed by
+	 * @return True if the speed was successfully increased, false otherwise
+	 * (e.g., if the resulting speed would exceed MAX_SPEED)
+	 */
+	@Override
+	public boolean speedUp(int increment) {
+		if (this.getSpeed() + increment <= MAX_SPEED ) {
+			return this.setSpeed(this.getSpeed() + increment);
+		}
+		return false;
 	}
 }
