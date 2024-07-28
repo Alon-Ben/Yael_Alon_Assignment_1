@@ -1,5 +1,7 @@
 package Animals;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import Graphics.IAnimal;
@@ -10,6 +12,9 @@ import Mobility.ILocatable;
 import Mobility.Mobile;
 import Olympics.Medal;
 import Mobility.Point;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
 
 /**
  * Abstract class representing an animal.
@@ -23,6 +28,7 @@ public abstract class Animal extends Mobile {
     /**
      * Enum representing the gender of the animal.
      */
+    public enum Orientation { EAST, SOUTH, WEST, NORTH}
     public enum Gender {MALE, FEMALE}
 
     private String name; // Name of the animal
@@ -30,6 +36,18 @@ public abstract class Animal extends Mobile {
     private double weight; // Weight of the animal
     private double speed; // Speed of the animal
     private ArrayList<Medal> medals = new ArrayList<Medal>(); // List of medals won by the animal
+
+    private Point position;
+    protected final int size = 65;
+    protected Orientation orien;
+    protected int maxEnergy;
+    protected int energyPerMeter;
+    protected int energy;//current energy
+    //protected CompetitionPanel pan;
+    protected ImageIcon img1, img2, img3, img4;
+
+
+
 
 //    private int size;
 //    private int id;
@@ -56,6 +74,8 @@ public abstract class Animal extends Mobile {
         this.gender = gender;
         this.weight = weight;
         this.speed = speed;
+
+
     }
 
     /**
@@ -104,6 +124,63 @@ public abstract class Animal extends Mobile {
         return this.speed;
     }
 
+    protected void SetImages(String resource_E, String resource_S,
+                             String resource_W, String resource_N) {
+        try {
+            this.img1 = new ImageIcon(ImageIO.read(new File(resource_E))); //East
+            this.img2 = new ImageIcon(ImageIO.read(new File(resource_S))); //South
+            this.img3 = new ImageIcon(ImageIO.read(new File(resource_W))); //West
+            this.img4 = new ImageIcon(ImageIO.read(new File(resource_N))); //North
+        }
+        catch (IOException e) { System.out.println("Cannot load image"); }
+    }
+
+    protected void SetImages(String resource_E, String resource_W) {
+
+        try {
+            this.img1 = new ImageIcon(ImageIO.read(new File(resource_E)));
+            this.img3 = new ImageIcon(ImageIO.read(new File(resource_W)));
+//            this.img1 = new ImageIcon(ImageIO.read(new File("src\\Assets\\dog2N.png")));
+//            this.img3 = new ImageIcon(ImageIO.read(new File("src\\Assets\\dog2E.png")));
+        }
+        catch (IOException e) { System.out.println("Cannot load image"); }
+        this.img2 = null;
+        this.img4 = null;
+    }
+
+    protected void SetImages(String resource_E) {
+
+        try {
+            this.img1 = new ImageIcon(ImageIO.read(new File(resource_E)));
+        }
+        catch (IOException e) { System.out.println("Cannot load image"); }
+        this.img2 = null;
+        this.img3 = null;
+        this.img4 = null;
+    }
+
+    public ImageIcon getImg(Orientation orien) {
+        switch (orien){
+            case EAST:
+                return this.img1;
+            case SOUTH:
+                return this.img2;
+            case WEST:
+                return this.img3;
+            case NORTH:
+                return this.img4;
+        }
+        return null;
+    }
+
+    //TODO: ???
+    public void loadImages(String st) {
+        //useless
+    }
+
+    public String getAnimalType(){
+        return this.getClass().getSimpleName();
+    }
 
 
 }

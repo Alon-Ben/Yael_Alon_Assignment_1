@@ -22,6 +22,13 @@ public abstract class TerrestrialAnimals extends Animal {
     public TerrestrialAnimals(String name, Gender gender, double weight, double speed, int noLegs) {
         super(name, gender, weight, speed, new Point(0, 20)); // Set initial position to (0, 20)
         this.noLegs = noLegs;
+
+        String st = super.getAnimalType().toLowerCase();
+        super.SetImages(
+                "src\\Assets\\" + st + "1E.png",
+                "src\\Assets\\" + st + "1S.png",
+                "src\\Assets\\" + st + "1W.png",
+                "src\\Assets\\" + st + "1N.png");
     }
 
     /**

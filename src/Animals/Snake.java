@@ -31,9 +31,36 @@ public class Snake extends TerrestrialAnimals implements IReptile {
 //    }
 // second assignment orders:
     public enum Poisonous {
-        LOW,
-        MID,
-        HIGH
+        Low {
+            @Override
+            public String toString() {
+                return "Low";
+            }
+        },
+        Mid {
+            @Override
+            public String toString() {
+                return "Mid";
+            }
+        },
+        High {
+            @Override
+            public String toString() {
+                return "High";
+            }
+        },
+        Yes {
+            @Override
+            public String toString() {
+                return "Yes";
+            }
+        },
+        No {
+            @Override
+            public String toString() {
+                return "No";
+            }
+        }
     }
 
     private Poisonous poisonous; // The venomous status of the snake
